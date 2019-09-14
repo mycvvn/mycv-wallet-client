@@ -18,6 +18,9 @@ class Wallet
         ]);
     }
 
+    /**
+     * Get info a wallet by wallet address
+     */
     public function getInfo($address)
     {
         $response = $this->client->request('GET', "/v1/wallets/{$address}");
@@ -38,7 +41,7 @@ class Wallet
     }
 
     /**
-     * Register a wallet
+     * Make a transaction to wallet
      */
     public function transaction($formParams = [])
     {
