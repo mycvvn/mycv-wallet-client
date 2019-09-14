@@ -9,6 +9,19 @@ class WalletClient
     const STATUS_OK = 200;
     const STATUS_CREATED = 201;
 
+    const INCREASE_TYPE = 'increase';
+    const DECREASE_TYPE = 'decrease';
+    const TRANSFER_TYPE = 'transfer';
+    const RECEIVE_TYPE = 'receive';
+
+    const COIN_TYPE = 'coin';
+    const CREDIT_TYPE = 'credit';
+    const VND_TYPE = 'vnd';
+
+    const ERROR_WALLET_NOT_EXIST = 1001;
+    const ERROR_COST_NOT_ENOUGH = 1002;
+    const ERROR_RECEIVER_NOT_EXIST = 1003;
+
     protected $client;
 
     public function __construct() {
