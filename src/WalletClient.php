@@ -4,8 +4,11 @@ namespace MyCV\Wallet;
 
 use GuzzleHttp\Client;
 
-class Wallet
+class WalletClient
 {
+    const STATUS_OK = 200;
+    const STATUS_CREATED = 201;
+
     protected $client;
 
     public function __construct() {
@@ -24,7 +27,7 @@ class Wallet
     public function getInfo($address)
     {
         $response = $this->client->request('GET', "/v1/wallets/{$address}");
-        if ($response->getStatusCode() === OK) {
+        if ($response->getStatusCode() === self::STATUS_OK) {
             return json_decode($response->getBody()->getContents());
         }
     }
@@ -35,7 +38,7 @@ class Wallet
     public function register()
     {
         $response = $this->client->request('POST', '/v1/register');
-        if ($response->getStatusCode() === CREATED) {
+        if ($response->getStatusCode() === self::STATUS_CREATED) {
             return json_decode($response->getBody()->getContents());
         }
     }
@@ -48,7 +51,7 @@ class Wallet
         $response = $this->client->request('POST', '/v1/transaction', [
             'form_params' => $formParams
         ]);
-        if ($response->getStatusCode() === OK) {
+        if ($response->getStatusCode() === self::STATUS_OK) {
             return json_decode($response->getBody()->getContents());
         }
     }
